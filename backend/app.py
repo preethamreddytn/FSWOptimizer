@@ -134,8 +134,8 @@ def predict():
                 tensile = models_cache['tensile'][m].predict(scaled_features)[0]
                 eff = models_cache['efficiency'][m].predict(scaled_features)[0]
                 predictions[m] = {
-                    'tensile_strength': round(float(tensile), 2),
-                    'efficiency': round(float(eff), 2)
+                    'tensile_strength': max(round(float(tensile), 2),0),
+                    'efficiency': max(round(float(eff), 2),0)
                 }
         
         # Find the mathematical best model based on maximum tensile strength
