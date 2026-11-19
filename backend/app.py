@@ -56,6 +56,19 @@ def load_models():
 
 load_models()
 
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({
+        "message": "FSWOptimizer API is running successfully!",
+        "status": "online",
+        "endpoints": {
+            "signup": "/api/signup",
+            "login": "/api/login",
+            "predict": "/api/predict",
+            "health": "/health"
+        }
+    })
+
 @app.route('/api/signup', methods=['POST'])
 def signup():
     data = request.json
